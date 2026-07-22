@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha de país · ETSIT x ElMundo</title>
+<meta name="description" content="Detalle de la oferta de plazas de movilidad internacional de la ETSIT-UPM en este país.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<header class="hero hero--compact">
+  <div class="hero__signal" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__left">
+      <p class="eyebrow"><a class="eyebrow__back" href="index.html">← Volver al mapa</a></p>
+      <h1 class="hero__title hero__title--country" id="countryName">País</h1>
+      <p class="hero__sub" id="countryCities"></p>
+    </div>
+    <dl class="hero__stats">
+      <div><dt id="cStatPlazas">–</dt><dd>plazas</dd></div>
+      <div><dt id="cStatUnis">–</dt><dd>universidades</dd></div>
+      <div><dt id="cStatCiudades">–</dt><dd>ciudades</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+  <section class="wrap section">
+    <div class="section__head">
+      <h2>Universidades de destino</h2>
+      <p class="count-pill"><strong id="resultCount">0</strong>&nbsp;destinos</p>
+    </div>
+    <div id="cards" class="uni-cards"></div>
+    <p class="empty" id="emptyMsg" hidden>No se ha encontrado este país en la oferta. <a href="index.html">Vuelve al mapa</a> para explorar los destinos disponibles.</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <p><strong>ETSIT x ElMundo</strong> · Oficina Internacional, ETS de Ingenieros de Telecomunicación, Universidad Politécnica de Madrid.</p>
+    <p class="footer__note">Datos orientativos generados desde la oferta oficial de plazas. Confirma condiciones, plazos y requisitos de idioma con la Oficina Internacional antes de solicitar.</p>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/country.js"></script>
+</body>
+</html>

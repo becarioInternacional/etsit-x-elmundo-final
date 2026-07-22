@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETSIT x El Mundo · Movilidad internacional ETSIT-UPM</title>
+<meta name="description" content="Mapa interactivo de la oferta de plazas de movilidad internacional (Erasmus+, bilaterales, Magalhães y SICUE) de la ETSIT-UPM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__signal" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__left">
+      <p class="eyebrow"><span class="eyebrow__dot"></span>ETSIT · UPM · Oficina Internacional</p>
+      <h1 class="hero__title">ETSIT <span class="hero__x">x</span> ElMundo</h1>
+      <p class="hero__sub">Oferta de plazas de movilidad internacional 2026–27. Explora los destinos en el mapa o filtra por país, ciudad, idioma, titulación y área de estudios.</p>
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="#explorador">Explorar destinos</a>
+        <a class="btn btn--ghost" href="#mapa">Ver el mapa</a>
+      </div>
+    </div>
+    <dl class="hero__stats" id="statPanel">
+      <div><dt id="statPlazas">–</dt><dd>plazas totales</dd></div>
+      <div><dt id="statPaises">–</dt><dd>países</dd></div>
+      <div><dt id="statUnis">–</dt><dd>universidades</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+  <section class="wrap section" id="mapa">
+    <div class="section__head">
+      <h2>Mapa de destinos</h2>
+      <p class="hint"><span class="hint__pulse"></span>Pasa el cursor sobre un país · Haz clic para ver su ficha completa</p>
+    </div>
+    <figure class="map-card">
+      <div id="map"><p class="map-fallback" id="mapFallback" hidden>El mapa no se ha podido cargar, pero puedes seguir explorando los destinos con los filtros de abajo.</p></div>
+      <figcaption class="map-legend">
+        <span>Menos plazas</span>
+        <span class="map-legend__ramp" aria-hidden="true"></span>
+        <span>Más plazas</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap section" id="explorador">
+    <div class="section__head">
+      <h2>Explorar destinos</h2>
+      <p class="count-pill"><strong id="resultCount">0</strong>&nbsp;resultados</p>
+    </div>
+
+    <div class="filters" role="search" aria-label="Filtros de destinos">
+      <label class="filter">
+        <span>País</span>
+        <select id="fPais"><option value="">Todos los países</option></select>
+      </label>
+      <label class="filter">
+        <span>Ciudad</span>
+        <select id="fCiudad"><option value="">Todas las ciudades</option></select>
+      </label>
+      <label class="filter">
+        <span>Idioma / CERT</span>
+        <select id="fIdioma"><option value="">Todos los idiomas</option></select>
+      </label>
+      <label class="filter">
+        <span>Titulación</span>
+        <select id="fTitulacion"><option value="">Todas las titulaciones</option></select>
+      </label>
+      <label class="filter">
+        <span>Área de estudios</span>
+        <select id="fArea"><option value="">Todas las áreas</option></select>
+      </label>
+      <label class="filter filter--search">
+        <span>Buscar</span>
+        <input type="search" id="fSearch" placeholder="Universidad, ciudad, código…">
+      </label>
+      <button class="btn btn--clear" id="btnClear" type="button">✕&nbsp;Limpiar filtros</button>
+    </div>
+
+    <div class="table-scroll">
+      <table class="results" aria-live="polite">
+        <thead>
+          <tr>
+            <th>Universidad</th>
+            <th>Ciudad</th>
+            <th>País</th>
+            <th>Código Erasmus</th>
+            <th class="th-num">Plazas</th>
+            <th>Programa</th>
+            <th>Titulación</th>
+            <th>Idioma requerido</th>
+            <th class="th-more"><span class="sr-only">Detalles</span></th>
+          </tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+    <p class="empty" id="emptyMsg" hidden>No hay destinos que cumplan estos filtros. Prueba a quitar alguno con «Limpiar filtros».</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <p><strong>ETSIT x ElMundo</strong> · Oficina Internacional, ETS de Ingenieros de Telecomunicación, Universidad Politécnica de Madrid.</p>
+    <p class="footer__note">Datos orientativos generados desde la oferta oficial de plazas. Confirma condiciones, plazos y requisitos de idioma con la Oficina Internacional antes de solicitar.</p>
+  </div>
+</footer>
+
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+
+<script src="assets/vendor/d3.min.js"></script>
+<script src="assets/vendor/topojson-client.min.js"></script>
+<script src="assets/world.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
