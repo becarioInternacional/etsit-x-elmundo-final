@@ -52,14 +52,26 @@ Cada fila se expande con «+» para ver duración, beca, certificado de idioma o
 
 ## Actualizar los datos
 
-Edita `data/Oferta_de_plazas_2026-27_web_OI.xlsx` y haz push: el workflow reconstruye
-`data.js` y despliega automáticamente. Para hacerlo en local:
+El Excel es la única fuente de la verdad: `assets/data.js` y `data/oferta.json` se
+regeneran a partir de él, así que no los edites a mano.
+
+**Requisitos (solo la primera vez):** `pip install pandas openpyxl`
+
+1. Copia el Excel nuevo en `data/` con el **mismo nombre** que el antiguo
+   (`Oferta_de_plazas_2026-27_web_OI.xlsx`) y con las mismas columnas.
+2. Regenera los datos y sube los cambios:
 
 ```bash
-pip install pandas openpyxl        # solo la primera vez
-python tools/build_data.py         # o pásale otra ruta de Excel como argumento
+python tools/build_data.py
+git add -A
+git commit -m "Actualiza la oferta de plazas"
+git push
 ```
 
+3. El workflow reconstruye los datos y despliega solo. Sigue el progreso en la pestaña
+   **Actions**; en 1–2 minutos la web está actualizada
+   (recarga con `Ctrl+F5` si ves la versión antigua).
+   
 El script normaliza países (`UK → GB`, `Rep Dom → DO`, `FR y US → FR`…), extrae
 idiomas de `CERT`, deriva titulaciones de las columnas SI/NO y avisa por consola si
 aparece un país nuevo sin mapeo (añádelo a `ISO_NOMBRE` e `ISO_NUM`) o filas con
